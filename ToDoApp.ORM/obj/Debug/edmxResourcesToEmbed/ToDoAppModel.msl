@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ToDoAppModelStoreContainer" CdmEntityContainer="ToDoAppEntities">
+    <EntitySetMapping Name="ITEMs">
+      <EntityTypeMapping TypeName="ToDoAppModel.ITEM">
+        <MappingFragment StoreEntitySet="ITEM">
+          <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+          <ScalarProperty Name="TODO_LIST_ID" ColumnName="TODO_LIST_ID" />
+          <ScalarProperty Name="ITEM_NAME" ColumnName="ITEM_NAME" />
+          <ScalarProperty Name="ITEM_DESCRIPTION" ColumnName="ITEM_DESCRIPTION" />
+          <ScalarProperty Name="DEADLINE" ColumnName="DEADLINE" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TODO_LIST">
+      <EntityTypeMapping TypeName="ToDoAppModel.TODO_LIST">
+        <MappingFragment StoreEntitySet="TODO_LIST">
+          <ScalarProperty Name="TODO_LIST_ID" ColumnName="TODO_LIST_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="TODO_LIST_NAME" ColumnName="TODO_LIST_NAME" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERs">
+      <EntityTypeMapping TypeName="ToDoAppModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="USER_PASSWORD" ColumnName="USER_PASSWORD" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ToDoAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ITEM">
+    <Key>
+      <PropertyRef Name="ITEM_ID" />
+    </Key>
+    <Property Name="ITEM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TODO_LIST_ID" Type="Int32" Nullable="false" />
+    <Property Name="ITEM_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ITEM_DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DEADLINE" Type="DateTime" Precision="3" />
+    <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TODO_LIST" Relationship="Self.FK_ITEM_TODO_LIST" FromRole="ITEM" ToRole="TODO_LIST" />
+  </EntityType>
+  <EntityType Name="TODO_LIST">
+    <Key>
+      <PropertyRef Name="TODO_LIST_ID" />
+    </Key>
+    <Property Name="TODO_LIST_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <Property Name="TODO_LIST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_TODO_LIST" FromRole="TODO_LIST" ToRole="ITEM" />
+    <NavigationProperty Name="USER" Relationship="Self.FK_TODO_LIST_USER" FromRole="TODO_LIST" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="USER_PASSWORD" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TODO_LIST" Relationship="Self.FK_TODO_LIST_USER" FromRole="USER" ToRole="TODO_LIST" />
+  </EntityType>
+  <Association Name="FK_ITEM_TODO_LIST">
+    <End Role="TODO_LIST" Type="Self.TODO_LIST" Multiplicity="1" />
+    <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TODO_LIST">
+        <PropertyRef Name="TODO_LIST_ID" />
+      </Principal>
+      <Dependent Role="ITEM">
+        <PropertyRef Name="TODO_LIST_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TODO_LIST_USER">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="TODO_LIST" Type="Self.TODO_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="TODO_LIST">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ToDoAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ITEMs" EntityType="Self.ITEM" />
+    <EntitySet Name="TODO_LIST" EntityType="Self.TODO_LIST" />
+    <EntitySet Name="USERs" EntityType="Self.USER" />
+    <AssociationSet Name="FK_ITEM_TODO_LIST" Association="Self.FK_ITEM_TODO_LIST">
+      <End Role="TODO_LIST" EntitySet="TODO_LIST" />
+      <End Role="ITEM" EntitySet="ITEMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TODO_LIST_USER" Association="Self.FK_TODO_LIST_USER">
+      <End Role="USER" EntitySet="USERs" />
+      <End Role="TODO_LIST" EntitySet="TODO_LIST" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,12 @@
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\bin\Debug\ToDoApp.Entity.dll
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\bin\Debug\ToDoApp.Entity.pdb
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\obj\Debug\ToDoApp.Entity.csproj.CoreCompileInputs.cache
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\obj\Debug\ToDoApp.Entity.dll
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\obj\Debug\ToDoApp.Entity.pdb
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\obj\Debug\ToDoApp.Entity.csprojAssemblyReference.cache
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\bin\Debug\ToDoApp.Entity.dll.config
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\bin\Debug\EntityFramework.dll
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\bin\Debug\EntityFramework.xml
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\omer-\source\repos\ToDoApp\ToDoApp.Entity\obj\Debug\ToDoApp.Entity.csproj.CopyComplete

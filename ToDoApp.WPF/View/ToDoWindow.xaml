@@ -1,0 +1,78 @@
+﻿<Window x:Class="ToDoApp.WPF.View.ToDoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoApp.WPF.View"
+        xmlns:modelView="clr-namespace:ToDoApp.WPF"
+        mc:Ignorable="d"
+        Title="ToDoWindow" Height="673.094" Width="1100" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Loaded="ToDoWindowLoaded">
+    <Window.DataContext>
+        <modelView:ToDoWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="277" Margin="10,10,0,0" VerticalAlignment="Top" Width="1074" Tag="asd"/>
+        <Label Content="ToDo List Grid" HorizontalAlignment="Left" Margin="632,66,0,433" RenderTransformOrigin="1.314,0.452" Width="102" Background="AliceBlue"/>
+        <Label Content="Item Grid" HorizontalAlignment="Left" Margin="925,349,0,150" RenderTransformOrigin="1.314,0.452" Width="102" Background="AliceBlue"/>
+        <ListView x:Name="ToDoLV" HorizontalAlignment="Left" Height="201" Margin="27,66,0,0" VerticalAlignment="Top" Width="600" ItemsSource="{Binding Path=ToDoList}" SelectionChanged="ToDoChanged" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="40" DisplayMemberBinding="{Binding ToDoID}">
+                        <TextBlock Text="ID" />
+                    </GridViewColumn>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding ToDoName}">
+                        <TextBlock Text="Name" />
+                    </GridViewColumn>
+                    <GridViewColumn Width="260" DisplayMemberBinding="{Binding CreateDate}">
+                        <TextBlock Text="CreateDate" />
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="DeleteBtn" Content="Delete" HorizontalAlignment="Left" Margin="336,25,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.03,0.123" Click="DeleteToDoList"/>
+        <Button x:Name="CreateBtn" Content="Create" HorizontalAlignment="Left" Margin="237,25,0,0" VerticalAlignment="Top" Width="75" Click="AddToDoList"/>
+        <TextBox x:Name="ToDoNameTxt" HorizontalAlignment="Left" Height="23" Margin="135,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75"/>
+
+
+        <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="224" Margin="10,292,0,0" VerticalAlignment="Top" Width="1074"/>-->
+        <ListView x:Name="ItemLV" HorizontalAlignment="Left" Height="164" Margin="27,433,0,0" VerticalAlignment="Top" Width="1000" ItemsSource="{Binding Path=Model.ItemList}" SelectionChanged="SelectedItemChanged" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="40" DisplayMemberBinding="{Binding ItemID}">
+                        <TextBlock Text="ID" />
+                    </GridViewColumn>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding ItemName}">
+                        <TextBlock Text="Name" />
+                    </GridViewColumn>
+                    <GridViewColumn Width="400" DisplayMemberBinding="{Binding ItemDescription}">
+                        <TextBlock Text="Description" />
+                    </GridViewColumn>
+                    <GridViewColumn Width="145" DisplayMemberBinding="{Binding Deadline}">
+                        <TextBlock Text="Deadline" />
+                    </GridViewColumn>
+                    <GridViewColumn Width="145" DisplayMemberBinding="{Binding CreateDate}">
+                        <TextBlock Text="CreateDate" />
+                    </GridViewColumn>
+                    <GridViewColumn Width="60" DisplayMemberBinding="{Binding Status}">
+                        <TextBlock Text="Status" />
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="DeleteItemBtn" Content="Delete" HorizontalAlignment="Left" Margin="135,382,0,0" VerticalAlignment="Top" Width="75" Click="DeleteItem"/>
+        <Button x:Name="CreateItemBtn" Content="Create" HorizontalAlignment="Left" Margin="27,382,0,0" VerticalAlignment="Top" Width="75" Click="AddItem" RenderTransformOrigin="-0.081,0.247"/>
+        <TextBox x:Name="ItemNameTxt" HorizontalAlignment="Left" Height="23" Margin="165,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
+        <TextBox x:Name="ItemDescriptionTxt" HorizontalAlignment="Left" Height="23" Margin="165,333,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
+        <Label x:Name="SelectedToDoName" Content="{Binding Path=MainWindowViewModel.SelectedToDoName}" HorizontalAlignment="Left" Margin="531,35,0,0" VerticalAlignment="Top" Width="170"/>
+        <Label x:Name="ItemNameLbl" Content="ItemName : " HorizontalAlignment="Left" Margin="27,302,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ItemDescriptionLbl" Content="Item Description : " HorizontalAlignment="Left" Margin="27,333,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DeadLine" HorizontalAlignment="Left" Margin="428,304,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="DeadLineLbl" Content="DeadLine : " HorizontalAlignment="Left" Margin="354,302,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="StatusLbl" Content="Status : " HorizontalAlignment="Left" Margin="360,333,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ItemStatusCmb" HorizontalAlignment="Left" Margin="428,337,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="ToDoNameLbl" Content="ToDo List Name : " HorizontalAlignment="Left" Margin="27,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.482"/>
+        <Button x:Name="ItemFilterBtn" Content="Filter" HorizontalAlignment="Left" Margin="595,304,0,0" VerticalAlignment="Top" Width="75" Click="ItemFilter"/>
+        <Button x:Name="ItemUpdateBtn" Content="Update" HorizontalAlignment="Left" Margin="256,382,0,0" VerticalAlignment="Top" Width="75" Click="UpdateItem"/>
+    </Grid>
+</Window>
